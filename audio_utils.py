@@ -2,10 +2,6 @@ import librosa
 import numpy as np
 
 
-class MusicUtils:
-    """This class is used to hold properties and utility functions for audio and csv"""
-
-
 class AudioContainer:
     """This class is used to hold utility functions and attributes for audio processing"""
 
