@@ -1,0 +1,10 @@
+diagrams/
+assets/
+# assets/examples/
+# assets/sounds/
+ex_outputs/
+models/
+music_venv_3.12/
+.venv/
+temp/
+__pycache__/
