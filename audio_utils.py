@@ -30,22 +30,16 @@ class AudioContainer:
         # Extend to 3d for Keras
 
         mel_spec = np.expand_dims(mel_spec, axis=2)
-        # print(mel_spec.shape)
 
         # Divide into 10-sec chunks
 
-        chunk_len = self.chunk_secs * sr
         frame_len = sr / hop_length * self.chunk_secs
-        # frame_len = (chunk_len + hop_length - 1) // hop_length
 
-        # print("mel shape[1]", mel_spec.shape[1], frame_len, sr, self.chunk_secs)
         chunks = [
             mel_spec[:, int(i) : int(i) + int(frame_len)]
             for i in np.arange(0.0, mel_spec.shape[1], frame_len)
-            # for i in range(0, mel_spec.shape[1], frame_len)
         ][:-1]  # Drop last chunk to ensure dimension regularity
 
-        # return chunks, chunks[0].shape
         return np.array(chunks)
 
 

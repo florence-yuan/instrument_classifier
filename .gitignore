@@ -8,3 +8,4 @@ music_venv_3.12/
 .venv/
 temp/
 __pycache__/
+vis/

@@ -1,6 +1,4 @@
-# from librosa.core import audio
 import pandas as pd
-import numpy as np
 
 
 class CsvContainer:
@@ -24,18 +22,6 @@ class CsvContainer:
     def describe(self):
         print(self.data.head(n=10))
 
-        """
-    def encode_ins(self):
-        Apply label encoding to instruments
-        Transform instruments to 0...n-1 (where n is the number of unique instruments)
-
-        le = LabelEncoder()
-        le.fit(self.data["instrument"].unique())
-        self.data["instrument"] = le.transform(self.data["instrument"])
-        self.ins_encoder = le
-        print("All instruments:", le.classes_)
-    """
-
     def get_data_chunks(self):
         """Divide CSV file into chunks based on start_time and end_time
         Each CSV chunk corresponds to an audio segment of length chunk_len"""
@@ -47,7 +33,6 @@ class CsvContainer:
             ]
             for i in range(0, self.audio_len, self.chunk_len)
         ][:-1]  # Drop last chunk
-        # print(len(data_chunks))
 
         return data_chunks
 
@@ -85,16 +70,4 @@ audio_secs = 251
 data_utils = CsvContainer(
     "assets/examples/music_net/1728.csv", sr * chunk_secs, sr * audio_secs
 )
-chunk_len = data_utils.chunk_len
-# data_chunks = data_utils.get_data_chunks()
-# print(data_chunks[0].describe())
-# print("-----------------")
-# print(data_chunks[0]["instrument"].unique())
-
-ins_per_chunk = np.array(data_utils.get_chunk_ins())
-print("Shape:", ins_per_chunk.shape)
-print("-----------------")
-print(ins_per_chunk[0])
-
-# print(to_categorical())
 # """
